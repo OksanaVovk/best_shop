@@ -1,0 +1,443 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins";
+
+.catalog-container {
+  @include mixins.responsive-value(margin-bottom, 50, 120);
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(5, auto);
+  row-gap: 15px;
+  grid-template-areas:
+    "filter"
+    "sort"
+    "search"
+    "cards"
+    "best ";
+
+  @media screen and (min-width: $bp-sm) {
+    grid-template-columns: auto 45%;
+    grid-template-rows: repeat(3, auto);
+    gap: 35px 50px;
+    grid-template-areas:
+      "filter filter"
+      "sort search"
+      "cards best";
+  }
+  @media screen and (min-width: $bp-md) {
+    grid-template-columns: auto 35%;
+  }
+  @media screen and (min-width: $bp-lg) {
+    grid-template-columns: 70% auto;
+  }
+}
+
+.show-filters-btn {
+  grid-area: filter;
+  @include mixins.responsive-value(width, 168, 224);
+
+  aspect-ratio: 224/40;
+  @include mixins.responsive-value(font-size, 12, 15);
+
+  display: none;
+
+  &.active {
+    display: flex;
+  }
+}
+
+.filter-large-box {
+  grid-area: filter;
+  display: none;
+
+  &.active {
+    display: block;
+  }
+
+  p {
+    @include mixins.text;
+
+    font-weight: 700;
+  }
+}
+
+.filters-inner {
+  @include mixins.flex-row(flex-start, flex-start, 24px);
+
+  flex-wrap: wrap;
+  border-top: 2px solid get-color("btn-color");
+  border-bottom: 2px solid get-color("btn-color");
+  padding: 15px 0 25px;
+  box-sizing: border-box;
+  @media screen and (min-width: $bp-sm) {
+    padding: 22px 0 35px;
+  }
+}
+
+.filter-box {
+  @include mixins.flex-column(center, flex-start, 13px);
+}
+
+.filter-select-box {
+  border: 2px solid get-color("light-grey-color");
+  background: get-color("white-color");
+  position: relative;
+  width: 300px;
+  height: 40px;
+  cursor: pointer;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.filter-options {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.flex-additional-box {
+  height: 40px;
+  @include mixins.flex-row(flex-start, center, 0);
+}
+
+.filter-options li {
+  padding: 13px 12px;
+  cursor: pointer;
+  @include mixins.text;
+
+  background-color: get-color("white-color");
+  color: get-color("grey-color");
+
+  &:first-child {
+    @include mixins.responsive-value(font-size, 9, 13);
+  }
+}
+
+.filter-options li:not(.selected) {
+  display: none;
+}
+
+.filter-box:hover .filter-options li {
+  display: block;
+  z-index: 1000;
+}
+
+.filter-box:hover .filter-options {
+  border: 2px solid get-color("light-grey-color");
+}
+
+.filter-box:hover .filter-select-box {
+  overflow: visible;
+  border: none;
+  z-index: 1000;
+}
+
+.filter-options li:hover {
+  background-color: get-color("light-grey-color-hover");
+}
+
+.filter-check {
+  position: relative;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid get-color("black-color");
+  border-radius: 50%;
+  cursor: pointer;
+  display: inline-block;
+  background: get-color("white-color");
+  transition: 0.2s;
+  @media screen and (min-width: $bp-sm) {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+.filter-check::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8%;
+  height: 8px;
+  background: get-color("black-color");
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.2s ease;
+  @media screen and (min-width: $bp-sm) {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+.filter-check:checked::after {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.filters-buttons {
+  display: flex;
+  gap: 20px;
+  margin-top: 30px;
+  @media screen and (min-width: $bp-sm) {
+    margin-top: 59px;
+  }
+}
+
+.filters-btn {
+  @include mixins.responsive-value(width, 149, 224);
+
+  aspect-ratio: 224/60;
+  @include mixins.responsive-value(font-size, 12, 15);
+}
+
+.catalog-sort-box {
+  grid-area: sort;
+  @include mixins.flex-row(space-between, center);
+}
+
+.catalog-pages-info {
+  @include mixins.text;
+
+  color: get-color("dark-grey-color");
+  line-height: 150%;
+  @media screen and (min-width: $bp-lg) {
+    font-size: 16px;
+  }
+}
+
+.catalog-select-box {
+  position: relative;
+  display: inline-block;
+  width: 202px;
+  height: 40px;
+
+  select {
+    appearance: none;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    padding: 8px 14px 10px 8px;
+    border: 2px solid get-color("light-grey-color");
+    box-sizing: border-box;
+    @include mixins.text;
+
+    color: get-color("grey-color");
+    transition: border-color 0.3s ease;
+
+    &:focus {
+      border-color: get-color("btn-color");
+    }
+
+    @media screen and (min-width: $bp-lg) {
+      font-size: 16px;
+    }
+  }
+}
+
+.catalog-select-btn,
+.filter-select-btn {
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: get-color("dark-grey-color");
+  pointer-events: none;
+
+  svg {
+    display: block;
+  }
+}
+
+.catalog-search-box {
+  position: relative;
+  width: 100%;
+  max-width: 341px;
+  max-height: 40px;
+  grid-area: search;
+
+  .catalog-search-input {
+    width: 100%;
+    max-width: 341px;
+    max-height: 40px;
+    padding: 8px 14px 10px 8px;
+    border: 2px solid get-color("light-grey-color");
+    box-sizing: border-box;
+    @include mixins.text;
+
+    color: get-color("dark-grey-color");
+    outline: none;
+    transition: all 0.3s ease;
+
+    &:focus {
+      border-color: get-color("btn-color");
+    }
+
+    @media screen and (min-width: $bp-lg) {
+      font-size: 16px;
+    }
+  }
+
+  .catalog-search-btn {
+    position: absolute;
+    top: 0;
+    right: 14px;
+    border: none;
+    background: none;
+    background-color: transparent;
+    cursor: pointer;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    svg {
+      display: block;
+      color: get-color("dark-grey-color");
+    }
+  }
+}
+
+.catalog-card-box {
+  grid-area: cards;
+  gap: 50px 11px;
+
+  .card-list {
+    margin-bottom: 60px;
+    gap: 50px 11px;
+    transition: opacity 0.4s ease;
+    opacity: 1;
+    transform: translateY(0);
+
+    &.fade-out {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+  }
+
+  span {
+    margin-left: 13px;
+  }
+
+  .catalog-button-flex {
+    display: flex;
+    align-items: center;
+
+    .catalog-pages-btn-box {
+      @include mixins.flex-row(center, center, 20px);
+
+      flex-grow: 1;
+
+      .catalog-page-btn {
+        font-family: "Helvetica Neue", sans-serif;
+        font-weight: 500;
+        font-size: 15px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        background-color: transparent;
+        cursor: pointer;
+        border: 0;
+        width: 41px;
+        height: 40px;
+        transition: background-color 0.3s ease;
+
+        &:hover,
+        &.active {
+          background-color: get-color("btn-color");
+        }
+      }
+    }
+
+    .catalog-next-btn {
+      font-family: "Helvetica Neue", sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      text-transform: uppercase;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      border: 2px solid get-color("btn-color");
+      width: 88px;
+      height: 40px;
+      background-color: transparent;
+      transition: background-color 0.3s ease;
+      margin-left: auto;
+
+      &:hover {
+        background-color: get-color("light-grey-color-hover");
+      }
+
+      &:disabled {
+        border-color: get-color("light-grey-color-hover");
+      }
+    }
+  }
+}
+
+.catalog-best-box {
+  grid-area: best;
+  align-self: start;
+  @include mixins.flex-column(center, flex-start, 23px);
+
+  h2 {
+    @include mixins.text;
+
+    font-weight: 700;
+  }
+
+  ul {
+    @include mixins.flex-column(flex-start, flex-start, 25px);
+
+    li {
+      @include mixins.flex-row(center, flex-start, 20px);
+
+      max-width: 339px;
+
+      .text-sets-box {
+        @include mixins.flex-column(center, flex-start, 10px);
+      }
+
+      p {
+        @include mixins.text;
+
+        font-size: 15px;
+        line-height: 136%;
+      }
+
+      .stars {
+        width: 79.5px;
+        height: 11px;
+      }
+
+      .img-box-sets {
+        height: 87px;
+        width: 87px;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+}
+
+.catalog-zero {
+  padding: 50px 0;
+
+  p {
+    @include mixins.text;
+
+    font-weight: 700;
+    text-align: center;
+  }
+}

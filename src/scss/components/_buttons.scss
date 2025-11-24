@@ -1,0 +1,21 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins";
+
+.button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: 0;
+  padding: 5px;
+  background-color: get-color("btn-color");
+  font-weight: 700;
+  color: get-color("white-color");
+  @include mixins.responsive-value(font-size, 10, 18);
+
+  transition: all 0.25s ease;
+
+  &:hover {
+    background-color: get-color("hover-btn-color");
+  }
+}

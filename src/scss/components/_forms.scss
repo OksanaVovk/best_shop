@@ -1,0 +1,134 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins";
+
+// modal
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: get-color("backdrop");
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s ease;
+  z-index: 100000;
+
+  &.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .modal {
+    width: 480px;
+    max-height: 384px;
+    background: get-color("white-color");
+    padding: 60px 70px 47px;
+    position: relative;
+    box-sizing: border-box;
+    animation: fadeIn 0.3s ease;
+
+    @media screen and (max-width: $bp-sm) {
+      padding: 30px 35px;
+    }
+
+    .login-form {
+      @include mixins.flex-column(center, flex-start, 0);
+
+      width: 100%;
+
+      label {
+        @include mixins.text;
+        @include mixins.responsive-value(font-size, 11, 14);
+
+        margin-bottom: 8px;
+
+        span {
+          color: get-color("btn-color");
+        }
+      }
+
+      .login-input {
+        width: 100%;
+        padding: 12px 15px;
+        box-sizing: border-box;
+        @include mixins.text;
+
+        border: 2px solid get-color("btn-color");
+        height: 40px;
+        margin-bottom: 33px;
+
+        &:focus {
+          border-color: get-color("hover-btn-color");
+          outline: none;
+        }
+      }
+    }
+  }
+
+  .password-box {
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .eye-icon {
+    position: absolute;
+    top: 13px;
+    right: 13px;
+    cursor: pointer;
+    opacity: 0.6;
+  }
+
+  .eye-icon:hover {
+    opacity: 1;
+  }
+}
+
+.checkbox-flex-box {
+  @include mixins.flex-row(space-between, center, 20px);
+
+  margin-bottom: 33px;
+  width: 100%;
+
+  .checkbox-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    .checkbox-label {
+      @include mixins.text;
+
+      color: get-color("grey-color");
+      font-size: 9px;
+    }
+  }
+
+  p {
+    @include mixins.text;
+
+    font-weight: 700;
+    font-size: 9px;
+    color: get-color("btn-color");
+  }
+}
+
+.login-btn {
+  font-family: "Helvetica Neue", sans-serif;
+  font-weight: 700;
+  @include mixins.responsive-value(font-size, 9, 12);
+
+  width: 100%;
+  height: 40px;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
