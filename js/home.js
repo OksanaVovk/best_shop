@@ -457,7 +457,14 @@ const randomTexts = [
   },
 ];
 
-if (window.location.pathname.endsWith("index.html") || path.endsWith("/best_shop/")) {
+const path = window.location.pathname;
+
+if (
+  path.endsWith("/index.html") ||
+  path.endsWith("/") ||
+  path.endsWith("/best_shop/") ||
+  path.endsWith("/best_shop/index.html")
+) {
   // Header
   const headerBox = document.getElementById("header-home");
 
