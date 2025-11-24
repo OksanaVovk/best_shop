@@ -1,0 +1,530 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins";
+
+.product-card-box {
+  display: grid;
+
+  @include mixins.responsive-value(margin-bottom, 35, 77);
+
+  @media screen and (max-width: $bp-sm) {
+    grid-template-columns: 1fr;
+    gap: 20px;
+
+    .product-info {
+      order: 2;
+    }
+
+    .product-images {
+      order: 1;
+    }
+
+    .product-thumbnails {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+  }
+  @media (min-width: $bp-sm) and (max-width: $bp-lg) {
+    grid-template-columns: auto 1fr;
+    gap: 20px;
+  }
+
+  @media screen and (min-width: $bp-lg) {
+    grid-template-columns: auto 1fr;
+    @include mixins.responsive-value(gap, 20, 43);
+  }
+
+  .product-images {
+    display: grid;
+    grid-template-rows: auto auto;
+    gap: 10px;
+    max-width: 645px;
+    @media (min-width: $bp-sm) and (max-width: $bp-lg) {
+      align-self: start;
+      grid-column: 1 / 2;
+      grid-row: 1 / 2;
+      @include mixins.responsive-value(width, 250, 400);
+
+      max-width: 100%;
+      height: auto;
+    }
+
+    #product-img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    .product-thumbnails {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      @include mixins.responsive-value(gap, 10, 15);
+
+      img {
+        width: 100%;
+        height: auto;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .product-info {
+    @media (min-width: $bp-sm) and (max-width: $bp-lg) {
+      grid-column: 2 / 3;
+      grid-row: 1 / 2;
+    }
+
+    h1 {
+      font-family: Montserrat, sans-serif;
+      font-weight: 700;
+      @include mixins.responsive-value(font-size, 15, 30);
+
+      line-height: 145%;
+      letter-spacing: 0;
+      margin-bottom: 17px;
+    }
+
+    .product-rating-box {
+      @include mixins.flex-row(flex-start, center, 16px);
+
+      margin-bottom: 15px;
+
+      .product-rating {
+        @include mixins.flex-row(flex-start, center, 4.5px);
+      }
+
+      p {
+        @include mixins.text;
+
+        color: get-color("dark-grey-color");
+        @include mixins.responsive-value(font-size, 9, 13);
+      }
+    }
+
+    .product-price {
+      font-family: Montserrat, sans-serif;
+      font-weight: 700;
+      @include mixins.responsive-value(font-size, 10, 20);
+
+      letter-spacing: 0;
+      @include mixins.responsive-value(margin-bottom, 20, 40);
+    }
+
+    .product-description {
+      @include mixins.flex-column(center, flex-start, 40px);
+      @include mixins.responsive-value(gap, 20, 40);
+      @include mixins.responsive-value(margin-bottom, 30, 69);
+
+      p {
+        @include mixins.text;
+
+        color: get-color("dark-grey-color");
+        line-height: 154%;
+      }
+    }
+
+    .product-options-box {
+      @include mixins.responsive-value(margin-bottom, 40, 80);
+      @include mixins.flex-column(center, flex-start, 30px);
+
+      .product-option {
+        @include mixins.flex-column(center, flex-start, 13px);
+
+        width: 100%;
+
+        label {
+          @include mixins.text;
+
+          color: get-color("dark-grey-color");
+          font-weight: 700;
+        }
+
+        .product-select-box {
+          position: relative;
+          display: inline-block;
+          width: 100%;
+          height: 40px;
+
+          select {
+            appearance: none;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            padding: 8px 14px 10px 8px;
+            border: 2px solid get-color("light-grey-color");
+            box-sizing: border-box;
+            @include mixins.text;
+
+            color: get-color("dark-grey-color");
+            transition: border-color 0.3s ease;
+
+            &:focus {
+              border-color: get-color("btn-color");
+            }
+
+            @media screen and (min-width: $bp-lg) {
+              font-size: 16px;
+            }
+          }
+
+          .product-select-btn {
+            position: absolute;
+            top: 50%;
+            right: 14px;
+            transform: translateY(-50%);
+            border: none;
+            background: none;
+            cursor: pointer;
+            color: #555;
+            pointer-events: none;
+
+            svg {
+              display: block;
+            }
+          }
+        }
+      }
+    }
+
+    .product-buttons {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 12px;
+      @include mixins.responsive-value(margin-bottom, 30, 59);
+
+      .product-counter-box {
+        width: 130px;
+        @include mixins.responsive-value(height, 40, 55);
+
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        border: 1px solid get-color("btn-color");
+        overflow: hidden;
+        background-color: get-color("white-color");
+
+        button {
+          background-color: transparent;
+          cursor: pointer;
+          border: none;
+          @include mixins.text;
+
+          color: #707070;
+          font-weight: 700;
+          @include mixins.responsive-value(font-size, 16, 25);
+
+          transition: background-color 0.2s ease;
+          width: 100%;
+
+          &:hover {
+            background-color: rgb(0 0 0 / 5%);
+          }
+        }
+
+        input {
+          width: 100%;
+          height: 100%;
+          text-align: center;
+          border: none;
+          outline: none;
+          @include mixins.text;
+
+          color: #707070;
+          font-weight: 700;
+          @include mixins.responsive-value(font-size, 16, 25);
+
+          background-color: transparent;
+
+          &::-webkit-inner-spin-button,
+          &::-webkit-outer-spin-button {
+            appearance: none;
+            margin: 0;
+          }
+
+          &[type="number"] {
+            appearance: textfield;
+          }
+        }
+      }
+
+      .add-to-cart-btn {
+        height: 100%;
+        width: 100%;
+      }
+    }
+
+    img {
+      width: 424px;
+      height: 29px;
+    }
+  }
+}
+
+.product-datails {
+  @include mixins.responsive-value(margin-bottom, 50, 100);
+
+  .product-datails-buttons {
+    @include mixins.flex-row(center, flex-start, 120px);
+    @include mixins.responsive-value(gap, 30, 120);
+    @include mixins.responsive-value(margin-bottom, 20, 40);
+
+    button {
+      cursor: pointer;
+      border: none;
+      background-color: transparent;
+      @include mixins.text;
+
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 150%;
+    }
+
+    .active {
+      border-bottom: 2px solid get-color("btn-color");
+    }
+  }
+
+  .product-details-text {
+    display: none;
+    @include mixins.responsive-value(margin-bottom, 50, 100);
+
+    p {
+      @include mixins.text;
+
+      color: get-color("dark-grey-color");
+      line-height: 154%;
+    }
+
+    &.active {
+      display: block;
+    }
+  }
+
+  .product-review-form {
+    display: none;
+
+    &.active {
+      @include mixins.flex-column(center, flex-start, 18px);
+
+      @media screen and (min-width: $bp-sm) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        @include mixins.responsive-value(gap, 50, 145);
+      }
+    }
+
+    .user-message {
+      max-width: 470px;
+
+      .bold-text-info {
+        @include mixins.text;
+
+        font-weight: 700;
+        margin-bottom: 90px;
+      }
+
+      .user-topic {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 25px;
+
+        .user-info-box {
+          @include mixins.flex-row(space-between, center, 10px);
+          @media (min-width: $bp-sm) and (max-width: $bp-lg) {
+            @include mixins.flex-row(space-between, flex-start, 10px);
+          }
+
+          margin-bottom: 30px;
+
+          .user-info {
+            @include mixins.flex-row(flex-start, center, 18px);
+            @media (min-width: $bp-sm) and (max-width: $bp-lg) {
+              @include mixins.flex-column(flex-start, center, 10px);
+            }
+
+            p {
+              @include mixins.text;
+
+              font-weight: 700;
+              color: get-color("dark-grey-color");
+            }
+
+            span {
+              @include mixins.text;
+
+              font-weight: 400;
+              @include mixins.responsive-value(font-size, 9, 13);
+
+              color: get-color("grey-color");
+            }
+          }
+        }
+
+        .message-text {
+          @include mixins.text;
+
+          line-height: 150%;
+        }
+      }
+    }
+
+    .user-form {
+      h2 {
+        @include mixins.text;
+
+        font-weight: 700;
+        margin-bottom: 20px;
+      }
+
+      p {
+        @include mixins.text;
+
+        font-weight: 400;
+        @include mixins.responsive-value(font-size, 9, 13);
+
+        margin-bottom: 30px;
+      }
+
+      .rating-block {
+        @include mixins.flex-row(flex-start, center, 16px);
+
+        margin-bottom: 29px;
+
+        h3 {
+          @include mixins.text;
+
+          font-weight: 700;
+          @include mixins.responsive-value(font-size, 9, 13);
+        }
+
+        .rating-wrapper {
+          position: relative;
+          width: max-content;
+          height: 16px;
+
+          .user-rating {
+            position: absolute;
+            top: 0;
+            left: 0;
+            @include mixins.flex-row(flex-start, center, 4.5px);
+
+            .stars-user {
+              fill: get-color("white-color");
+              cursor: pointer;
+
+              .stars-user use {
+                pointer-events: none;
+              }
+            }
+
+            .stars-user.active {
+              fill: #f5b423;
+            }
+          }
+
+          .user-rating-outlined {
+            position: absolute;
+            top: 0;
+            left: 0;
+            @include mixins.flex-row(flex-start, center, 4.5px);
+
+            pointer-events: none;
+          }
+        }
+      }
+
+      .review-form {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      .input,
+      .review-text {
+        padding: 12px 15px;
+        border: 2px solid get-color("btn-color");
+        box-sizing: border-box;
+        @include mixins.text;
+
+        color: get-color("dark-grey-color");
+        outline: none;
+
+        &::placeholder {
+          @include mixins.responsive-value(font-size, 9, 13);
+
+          color: get-color("grey-color");
+        }
+
+        &:focus {
+          border-color: get-color("hover-btn-color");
+        }
+      }
+
+      .review-text {
+        height: 170px;
+        resize: vertical;
+      }
+
+      .input-row {
+        display: flex;
+        gap: 20px;
+
+        .input {
+          flex: 1;
+          height: 40px;
+        }
+      }
+
+      .checkbox {
+        @include mixins.flex-row(flex-start, center, 15px);
+
+        cursor: pointer;
+
+        span {
+          @include mixins.text;
+          @include mixins.responsive-value(font-size, 9, 13);
+
+          color: get-color("grey-color");
+        }
+
+        input {
+          height: 16px;
+          width: 16px;
+          border: 2px solid get-color("grey-color");
+        }
+      }
+
+      .button {
+        width: 90px;
+        height: 40px;
+        font-family: "Helvetica Neue", sans-serif;
+        font-weight: 700;
+        @include mixins.responsive-value(font-size, 9, 12);
+      }
+    }
+  }
+
+  .empty-box {
+    display: none;
+    height: 100px;
+
+    &.active {
+      display: block;
+    }
+  }
+}
+
+.suggestions-products-section {
+  @include mixins.flex-column(center, center, 70px);
+  @include mixins.responsive-value(gap, 30, 70);
+  @include mixins.responsive-value(margin-bottom, 50, 120);
+
+  .suggestions-products-title {
+    @include mixins.text;
+
+    font-weight: 700;
+    @include mixins.responsive-value(font-size, 20, 30);
+
+    border-bottom: 2px solid get-color("btn-color");
+    padding-bottom: 9px;
+    display: inline-block;
+  }
+}

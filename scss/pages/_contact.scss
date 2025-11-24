@@ -1,0 +1,115 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins";
+
+// banner-section
+
+.contact-banner-section {
+  background:
+    linear-gradient(rgb(0 0 0 / 50%), rgb(0 0 0 / 50%)),
+    url("../../src/assets/images/contact_banner.jpg");
+}
+
+.contact-form-box {
+  @include mixins.flex-column(center, center, 30px);
+  @include mixins.responsive-value(margin-bottom, 50, 120);
+
+  @media screen and (min-width: $bp-md) {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    @include mixins.responsive-value(gap, 20, 40);
+  }
+
+  .form-img-box {
+    width: 100%;
+    height: 100%;
+    max-width: 627px;
+    @media screen and (min-width: $bp-md) {
+      width: clamp(350px, 40vw, 627px);
+      display: flex;
+      align-items: flex-start;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+  }
+
+  h2 {
+    @include mixins.text;
+
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 140%;
+    @include mixins.responsive-value(font-size, 18, 25);
+    @include mixins.responsive-value(margin-bottom, 20, 34);
+  }
+
+  p {
+    @include mixins.text;
+    @include mixins.responsive-value(margin-bottom, 40, 70);
+
+    line-height: 140%;
+    @media screen and (min-width: $bp-md) {
+      margin-bottom: 30px;
+    }
+    @media screen and (min-width: $bp-lg) {
+      margin-bottom: 70px;
+    }
+  }
+
+  form {
+    @include mixins.flex-column(center, flex-start, 0);
+
+    label {
+      @include mixins.text;
+
+      font-weight: 700;
+
+      @include mixins.responsive-value(font-size, 13, 18);
+
+      margin-bottom: 8px;
+
+      span {
+        color: get-color("btn-color");
+      }
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 12px 15px;
+      box-sizing: border-box;
+      @include mixins.text;
+
+      border: 2px solid get-color("btn-color");
+      height: 44px;
+      @include mixins.responsive-value(margin-bottom, 20, 40);
+      @media screen and (min-width: $bp-md) {
+        margin-bottom: 20px;
+      }
+      @media screen and (min-width: $bp-lg) {
+        margin-bottom: 35px;
+      }
+
+      &:focus {
+        border-color: get-color("hover-btn-color");
+        outline: none;
+      }
+    }
+
+    textarea {
+      min-height: 119px;
+    }
+
+    .contact-btn {
+      font-family: "Helvetica Neue", sans-serif;
+      font-weight: 700;
+      @include mixins.responsive-value(font-size, 9, 12);
+
+      width: 90px;
+      height: 40px;
+    }
+  }
+}

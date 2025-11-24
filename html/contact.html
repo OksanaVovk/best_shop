@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Project</title>
+    <link rel="stylesheet" href="/dist/css/main.css" />
+  </head>
+  <body>
+    <div id="login-modal-backdrop" class="backdrop is-hidden"></div>
+    <header class="header header-gap-small" id="header-contact"></header>
+    <main>
+      <secton class="banner-section contact-banner-section">
+        <div>
+          <h1>Contact Us</h1>
+          <p>
+            Duis vestibulum elit vel neque pharetra vulputate.
+            <br />
+            Duis rutrum non risus in imperdiet.
+          </p>
+        </div>
+      </secton>
+      <div class="container">
+        <section class="icons-section">
+          <ul class="list-icons">
+            <li>
+              <svg>
+                <use href="../assets/images/icons.svg#icon-location"></use>
+              </svg>
+              <h2>Our Location</h2>
+              <p>
+                1234 NW Bobcat Lane, St.
+                <br />
+                Robert, MO 65584-5678
+              </p>
+            </li>
+            <li>
+              <svg>
+                <use href="../assets/images/icons.svg#icon-time"></use>
+              </svg>
+              <h2>Operating Time</h2>
+              <p>
+                Monday - Friday: 9am - 6 pm
+                <br />
+                Weekends: 10:30 am - 6pm
+              </p>
+            </li>
+            <li>
+              <svg>
+                <use href="../assets/images/icons.svg#icon-mail"></use>
+              </svg>
+              <h2>Our Email</h2>
+              <p>
+                best@shop.com
+                <br />
+                info@bestshop.com
+              </p>
+            </li>
+            <li>
+              <svg>
+                <use href="../assets/images/icons.svg#icon-call"></use>
+              </svg>
+              <h2>Call Us</h2>
+              <p>
+                (268)142-8413
+                <br />
+                (760)265-2917
+              </p>
+            </li>
+          </ul>
+        </section>
+        <section class="contact-form-box">
+          <div class="form-img-box">
+            <img src="../assets/images/contact_form.jpg" alt="Suitcase" />
+          </div>
+          <div>
+            <h2>Your Feedback Is Much Appreciated!</h2>
+            <p>We will contact you when you complete the following form!</p>
+            <form id="feedbackform">
+              <label for="user_name">
+                Your Name
+                <span>*</span>
+              </label>
+              <input name="name" id="user_name" required minlength="2" maxlength="40" />
+
+              <label for="user_email">
+                Your Email Address
+                <span>*</span>
+              </label>
+              <input name="email" id="user_email" required type="email" maxlength="50" />
+
+              <label for="topic">
+                Topic
+                <span>*</span>
+              </label>
+              <input name="topic" id="topic" required minlength="2" maxlength="50" />
+
+              <label for="user-message">
+                Your Message
+                <span>*</span>
+              </label>
+              <textarea
+                name="message"
+                id="user-message"
+                required
+                minlength="10"
+                maxlength="500"
+              ></textarea>
+
+              <button type="submit" class="button contact-btn" id="contact-btn">SEND</button>
+            </form>
+          </div>
+        </section>
+      </div>
+    </main>
+    <footer id="footer"></footer>
+
+    <script src="../js/main.js" type="module"></script>
+  </body>
+</html>

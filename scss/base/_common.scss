@@ -1,0 +1,32 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins";
+
+body {
+  height: auto;
+  font-family: Montserrat, sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0;
+  background: get-color("white-color");
+  color: get-color("black-color");
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  cursor: pointer;
+}
+
+.container {
+  margin: 0 auto;
+  box-sizing: border-box;
+  @include mixins.responsive-value(padding-left, 16, 200);
+  @include mixins.responsive-value(padding-right, 16, 200);
+
+  max-width: 1700px;
+}

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Project</title>
+    <link rel="stylesheet" href="/dist/css/main.css" />
+  </head>
+  <body>
+    <div id="login-modal-backdrop" class="backdrop is-hidden"></div>
+    <header class="header header-gap-small" id="header-cart"></header>
+    <main class="main">
+      <secton class="cart-banner-section"><h1>Cart</h1></secton>
+      <section class="cart-table-section container">
+        <div class="cart-table-box">
+          <div class="empty-cart active" id="empty-cart"></div>
+          <div class="cart-table" id="cart-table">
+            <div class="cart-header">
+              <span>IMAGE</span>
+              <span>PRODUCT NAME</span>
+              <span>PRICE</span>
+              <span>QUANTITY</span>
+              <span>TOTAL</span>
+              <span>DELETE</span>
+            </div>
+            <ul class="cart-list" id="cart-list"></ul>
+            <div class="flex-container">
+              <div class="cart-buttons">
+                <button class="button continue" id="continue">CONTINUE SHOPPING</button>
+                <button class="button clear" id="clear">CLEAR SHOPPING CART</button>
+              </div>
+              <div class="cart-summary">
+                <div class="summary-row">
+                  <span>Sub Total</span>
+                  <span id="summary-total"></span>
+                </div>
+
+                <div class="summary-row summary-discount" id="summary-discount-box">
+                  <span>Discount</span>
+                  <span id="summary-discount"></span>
+                </div>
+
+                <div class="summary-row">
+                  <span>Shipping</span>
+                  <span>$30</span>
+                </div>
+
+                <div class="summary-row amount-due">
+                  <span>Total</span>
+                  <span id="amount-due"></span>
+                </div>
+
+                <button class="button checkout-btn" id="checkout">CHECKOUT</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer" id="footer"></footer>
+
+    <script src="../js/main.js" type="module"></script>
+  </body>
+</html>

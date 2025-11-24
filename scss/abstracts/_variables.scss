@@ -1,0 +1,22 @@
+@use "sass:map";
+
+$colors: (
+  "white-color": #fff,
+  "black-color": #000,
+  "dark-grey-color": #504e4a,
+  "light-grey-color": #e9e9ed,
+  "banner-color": #e7e8e9,
+  "btn-color": #b92770,
+  "hover-btn-color": #9c1f5f,
+  "light-grey-color-hover": #f0f0f0,
+  "grey-color": #727174,
+  "backdrop": rgb(0 0 0 / 50%),
+);
+
+@function get-color($key) {
+  @return map.get($colors, $key);
+}
+
+$bp-sm: 768px;
+$bp-md: 1024px;
+$bp-lg: 1440px;

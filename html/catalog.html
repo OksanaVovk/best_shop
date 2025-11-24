@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Project</title>
+    <link rel="stylesheet" href="/dist/css/main.css" />
+  </head>
+  <body>
+    <div id="login-modal-backdrop" class="backdrop is-hidden"></div>
+    <header class="header header-gap-large" id="header-catalog"></header>
+    <main class="main">
+      <section class="catalog-container container">
+        <button class="button show-filters-btn" id="show-filters-btn">SHOW FILTERS</button>
+        <div class="filter-large-box active" id="filter-large-box">
+          <div class="filters-inner">
+            <div class="filter-box">
+              <p>Size</p>
+              <div class="filter-select-box">
+                <ul class="filter-options">
+                  <li data-value="" class="selected">Choose option</li>
+                  <li data-value="S">S</li>
+                  <li data-value="M">M</li>
+                  <li data-value="L">L</li>
+                  <li data-value="XL">XL</li>
+                  <li data-value="S-L">S-L</li>
+                  <li data-value="S, M, XL">S, M, XL</li>
+                </ul>
+                <button class="filter-select-btn">
+                  <svg width="8" height="12">
+                    <use href="../assets/images/icons.svg#icon-arrow"></use>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="filter-box">
+              <p>Color</p>
+              <div class="filter-select-box">
+                <ul class="filter-options">
+                  <li data-value="" class="selected">Choose option</li>
+                  <li data-value="red">red</li>
+                  <li data-value="blue">blue</li>
+                  <li data-value="green">green</li>
+                  <li data-value="black">black</li>
+                  <li data-value="grey">grey</li>
+                  <li data-value="yellow">yellow</li>
+                  <li data-value="pink">pink</li>
+                </ul>
+                <button class="filter-select-btn">
+                  <svg width="8" height="12">
+                    <use href="../assets/images/icons.svg#icon-arrow"></use>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="filter-box">
+              <p>Category</p>
+              <div class="filter-select-box">
+                <ul class="filter-options">
+                  <li data-value="" class="selected">Choose option</li>
+                  <li data-value="carry-ons">carry-ons</li>
+                  <li data-value="suitcase">suitcase</li>
+                  <li data-value="luggage sets">luggage sets</li>
+                  <li data-value="suitcase">suitcase</li>
+                  <li data-value="kids' luggage">kids' luggage</li>
+                </ul>
+                <button class="filter-select-btn">
+                  <svg width="8" height="12">
+                    <use href="../assets/images/icons.svg#icon-arrow"></use>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="filter-box">
+              <p class="filter-title">Sales</p>
+              <div class="flex-additional-box">
+                <input type="checkbox" class="filter-check" />
+              </div>
+            </div>
+          </div>
+          <div class="filters-buttons">
+            <button id="clear-filters" class="button filters-btn">CLEAR FILTERS</button>
+            <button id="hide-filters" class="button filters-btn">HIDE FILTERS</button>
+          </div>
+        </div>
+
+        <div class="catalog-sort-box">
+          <p class="catalog-pages-info" id="catalog-pages-info">some text.....</p>
+          <div class="catalog-select-box">
+            <select id="catalog-selector">
+              <option value="default">Default Sorting</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="popularity">Popularity</option>
+              <option value="rating">Rating</option>
+            </select>
+            <button class="catalog-select-btn">
+              <svg width="8" height="12">
+                <use href="../assets/images/icons.svg#icon-arrow"></use>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="catalog-search-box">
+          <input
+            type="text"
+            class="catalog-search-input"
+            id="catalog-search-input"
+            placeholder="Search Models"
+            aria-label="Search"
+          />
+          <button
+            class="catalog-search-btn"
+            id="catalog-search-btn"
+            type="button"
+            aria-label="Search button"
+          >
+            <svg width="17" height="17">
+              <use href="../assets/images/icons.svg#icon-search"></use>
+            </svg>
+          </button>
+        </div>
+        <div class="catalog-card-box">
+          <ul class="card-list" id="catalog-card-list"></ul>
+          <div class="catalog-button-flex">
+            <div class="catalog-pages-btn-box" id="catalog-pages-btn-box"></div>
+            <button class="catalog-next-btn" id="catalog-next-btn">
+              Next
+              <span>&gt;</span>
+            </button>
+          </div>
+        </div>
+        <div class="catalog-best-box">
+          <h2>Top Best Sets</h2>
+          <ul id="catalog-best-list"></ul>
+        </div>
+      </section>
+    </main>
+    <footer class="footer" id="footer"></footer>
+
+    <script src="../js/main.js" type="module"></script>
+  </body>
+</html>

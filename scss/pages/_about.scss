@@ -1,0 +1,175 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins";
+
+// banner-section
+
+.banner-section {
+  @include mixins.flex-row(center, center, 0);
+
+  width: 100%;
+  background:
+    linear-gradient(rgb(0 0 0 / 50%), rgb(0 0 0 / 50%)),
+    url("../../src/assets/images/about_hero.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @include mixins.responsive-value(height, 300, 554);
+  @include mixins.responsive-value(margin-bottom, 70, 130);
+
+  div {
+    @include mixins.flex-column(center, center, 20px);
+
+    h1 {
+      @include mixins.text;
+
+      font-weight: 700;
+      @include mixins.responsive-value(font-size, 30, 50);
+
+      color: get-color("white-color");
+    }
+
+    p {
+      @include mixins.text;
+
+      color: get-color("light-grey-color");
+      line-height: 144%;
+      text-align: center;
+    }
+  }
+}
+
+// awards-section
+
+.icons-section {
+  @include mixins.responsive-value(margin-bottom, 70, 130);
+
+  width: 100%;
+
+  .list-icons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    @media screen and (min-width: $bp-sm) {
+      grid-template-columns: repeat(4, 1fr);
+      @include mixins.responsive-value(gap, 10, 20);
+    }
+
+    li {
+      @include mixins.flex-column(flex-start, center, 20px);
+      @include mixins.responsive-value(gap, 10, 20);
+
+      svg {
+        @include mixins.responsive-value(width, 31, 62);
+
+        aspect-ratio: 1;
+      }
+
+      h2 {
+        @include mixins.text;
+
+        font-weight: 700;
+        @include mixins.responsive-value(font-size, 14, 20);
+      }
+
+      p {
+        @include mixins.text;
+
+        line-height: 150%;
+        text-align: center;
+      }
+    }
+  }
+}
+
+// about-article
+.about-article {
+  @include mixins.flex-column(center, flex-start, 30px);
+  @include mixins.responsive-value(margin-bottom, 70, 130);
+  @media screen and (min-width: $bp-md) {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    @include mixins.responsive-value(gap, 20, 40);
+  }
+
+  .about-article-text-box {
+    @include mixins.flex-column(center, flex-start, 30px);
+    @include mixins.responsive-value(gap, 20, 30);
+
+    h1 {
+      @include mixins.title;
+    }
+
+    p {
+      @include mixins.text;
+
+      line-height: 150%;
+      color: get-color("dark-grey-color");
+    }
+
+    .about-article-bth {
+      @include mixins.responsive-value(width, 131, 200);
+      @include mixins.responsive-value(height, 40, 61);
+    }
+  }
+
+  .about-img-box {
+    max-width: 615px;
+    @media screen and (min-width: $bp-md) {
+      @include mixins.responsive-value(width, 200, 615);
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+}
+
+// about-team
+.about-team-section {
+  @include mixins.flex-column(center, center, 30px);
+  @include mixins.responsive-value(gap, 30, 50);
+  @include mixins.responsive-value(margin-bottom, 70, 170);
+
+  h1 {
+    @include mixins.title;
+
+    border-bottom: 2px solid get-color("btn-color");
+    padding-bottom: 10px;
+    display: inline-block;
+  }
+
+  ul {
+    width: 100%;
+    display: grid;
+    grid-auto-flow: row;
+    @include mixins.responsive-value(gap, 20, 35);
+
+    grid-template-columns: repeat(auto-fit, minmax(250px, 410px));
+    justify-content: center;
+
+    li {
+      @include mixins.flex-column(center, center, 27px);
+      @include mixins.responsive-value(gap, 15, 27);
+
+      h2 {
+        @include mixins.text;
+
+        font-weight: 700;
+        @include mixins.responsive-value(font-size, 17, 22);
+      }
+
+      p {
+        @include mixins.text;
+      }
+    }
+  }
+}
+
+// about-offer
+
+.offer-about-page {
+  @include mixins.responsive-value(margin-bottom, 50, 120);
+}

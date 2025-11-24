@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Project</title>
+    <link rel="stylesheet" href="/dist/css/main.css" />
+  </head>
+  <body>
+    <div id="login-modal-backdrop" class="backdrop is-hidden"></div>
+    <header class="header header-gap-large" id="header-product"></header>
+    <main class="main">
+      <div class="container">
+        <section class="product-section">
+          <div class="product-card-box">
+            <div class="product-images">
+              <img id="product-img" alt="Suitcase main" />
+
+              <div class="product-thumbnails">
+                <img src="../assets/images/small1.jpg" alt="suitcase" />
+                <img src="../assets/images/small2.jpg" alt="suitcase" />
+                <img src="../assets/images/small3.jpg" alt="suitcase" />
+                <img src="../assets/images/small4.jpg" alt="suitcase" />
+              </div>
+            </div>
+
+            <div class="product-info">
+              <h1 id="product-name">Loading…</h1>
+              <div class="product-rating-box">
+                <div id="product-rating" class="product-rating"></div>
+                <p>(1 Clients Review)</p>
+              </div>
+
+              <p class="product-price" id="product-price"></p>
+              <div class="product-description">
+                <p>
+                  The new Global Explorer Max Comfort Suitcase Pro is a bold reimagining of travel
+                  essentials, designed to elevate every journey. Made with at least 30% recycled
+                  materials, its lightweight yet impact-resistant shell combines eco- conscious
+                  innovation with rugged durability.
+                </p>
+                <p>
+                  The ergonomic handle and GlideMotion spinner wheels ensure effortless mobility
+                  while making a statement in sleek design. Inside, the modular compartments and
+                  adjustable straps keep your belongings secure and neatly organized, no matter the
+                  destination.
+                </p>
+              </div>
+
+              <form class="product-options-box">
+                <!-- Size -->
+                <div class="product-option">
+                  <label for="size">Size</label>
+                  <div class="product-select-box">
+                    <select id="size" name="size">
+                      <option value="" disabled selected hidden>Choose option</option>
+                    </select>
+                    <button class="product-select-btn">
+                      <svg width="8" height="12">
+                        <use href="../assets/images/icons.svg#icon-arrow"></use>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Color -->
+                <div class="product-option">
+                  <label for="color">Color</label>
+                  <div class="product-select-box">
+                    <select id="color" name="color" required>
+                      <option value="" disabled selected hidden>Choose option</option>
+                    </select>
+                    <button class="product-select-btn">
+                      <svg width="8" height="12">
+                        <use href="../assets/images/icons.svg#icon-arrow"></use>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Category -->
+                <div class="product-option">
+                  <label for="category">Category</label>
+                  <div class="product-select-box">
+                    <select id="category" name="category">
+                      <option value="" disabled selected hidden>Choose option</option>
+                    </select>
+                    <button class="product-select-btn" type="submit">
+                      <svg width="8" height="12">
+                        <use href="../assets/images/icons.svg#icon-arrow"></use>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </form>
+
+              <!-- Add To Cart -->
+              <div class="product-buttons">
+                <div id="product-counter-box" class="product-counter-box">
+                  <button class="counter-btn counter-minus">-</button>
+                  <input class="counter-input" id="counter-input" value="1" type="number" min="1" />
+                  <button class="counter-btn counter-plus">+</button>
+                </div>
+
+                <button class="button add-to-cart-btn" id="add-to-cart-btn">Add To Cart</button>
+              </div>
+
+              <img src="../assets/images/payments.png" alt="Payments" class="product-payments" />
+            </div>
+          </div>
+        </section>
+        <section class="product-datails">
+          <div class="product-datails-buttons" id="product-datails-buttons">
+            <button data-tab="details" class="active">DETAILS</button>
+            <button data-tab="reviews">REVIEWS</button>
+            <button data-tab="shipping">SHIPPING POLICY</button>
+          </div>
+          <div class="product-additional-info">
+            <div data-content="details" class="product-details-text active">
+              <p>
+                Vestibulum commodo sapien non elit porttitor, vitae volutpat nibh mollis. Nulla
+                porta risus id neque tempor, in efficitur justo imperdiet. Etiam a ex at ante
+                tincidunt imperdiet. Nunc congue ex vel nisl viverra, sit amet aliquet lectus
+                ullamcorper. Praesent luctus lacus non lorem elementum, eu tristique sapien
+                suscipit. Sed bibendum, ipsum nec viverra malesuada, erat nisi sodales purus, eget
+                hendrerit dui ligula eu enim. Ut non est nisi. Pellentesque tristique pretium dolor
+                eu commodo. Proin iaculis nibh vitae lectus mollis bibendum. Quisque varius eget
+                urna sit amet luctus. Suspendisse potenti. Curabitur ac placerat est, sit amet
+                sodales risus. Pellentesque viverra dui auctor, ullamcorper turpis pharetra,
+                facilisis quam.
+                <br />
+                <br />
+                Proin iaculis nibh vitae lectus mollis bibendum. Quisque varius eget urna sit amet
+                luctus. Suspendisse potenti. Curabitur ac placerat est, sit amet sodales risus.
+                Pellentesque viverra dui auctor, ullamcorper turpis pharetra, facilisis quam. Proin
+                iaculis nibh vitae lectus mollis bibendum.
+                <br />
+                <br />
+                Quisque varius eget urna sit amet luctus. Suspendisse potenti. Curabitur ac placerat
+                est, sit amet sodales risus. Pellentesque viverra dui auctor, ullamcorper turpis
+                pharetra, facilisis quam.
+              </p>
+            </div>
+            <div data-content="reviews" class="product-review-form">
+              <div class="user-message">
+                <p class="bold-text-info">1 review for Global Explorer Max Comfort Suitcase Pro</p>
+                <div class="user-topic">
+                  <img src="../assets/images/ella.png" alt="Woman" />
+                  <div>
+                    <div class="user-info-box">
+                      <div class="user-info">
+                        <p>Ella Harper</p>
+                        <span>/ June 11, 2025</span>
+                      </div>
+                      <img src="../assets/images/stars4.png" alt="Stars" />
+                    </div>
+                    <p class="message-text">
+                      Proin iaculis nibh vitae lectus mollis bibendum. Quisque varius eget urna sit
+                      amet luctus. Suspendisse potenti curabitur ac placerat est, sit amet sodales
+                      risus.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="user-form">
+                <h2>Add Review</h2>
+
+                <p>
+                  Your email address won’t be shared with anybody. Required fields have the symbol *
+                </p>
+
+                <div class="rating-block">
+                  <h3>RATE PRODUCT</h3>
+                  <div class="rating-wrapper">
+                    <div class="user-rating" id="user-rating"></div>
+                    <div class="user-rating-outlined" id="user-rating-outlined"></div>
+                  </div>
+                </div>
+
+                <form class="review-form" id="review-form">
+                  <textarea
+                    name="review"
+                    placeholder="Your Review*"
+                    required
+                    minlength="10"
+                    maxlength="500"
+                    class="input review-text"
+                  ></textarea>
+
+                  <div class="input-row">
+                    <input
+                      type="text"
+                      name="name"
+                      placeholder="Your Name*"
+                      class="input"
+                      required
+                      minlength="2"
+                    />
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="Your Email*"
+                      class="input"
+                      id="your-email"
+                      required
+                    />
+                  </div>
+
+                  <label class="checkbox">
+                    <input type="checkbox" name="save-data" />
+                    <span>Save my name, email, and website for future comments.</span>
+                  </label>
+
+                  <button class="button" type="submit">SUBMIT</button>
+                </form>
+              </div>
+            </div>
+            <div data-content="shipping" class="empty-box"></div>
+          </div>
+        </section>
+        <section class="suggestions-products-section">
+          <h1 class="suggestions-products-title">You May Also Like</h1>
+          <ul class="card-list suggestions-products-list" id="suggestions-products-list"></ul>
+        </section>
+      </div>
+    </main>
+    <footer class="footer" id="footer"></footer>
+
+    <script src="../js/main.js" type="module"></script>
+  </body>
+</html>

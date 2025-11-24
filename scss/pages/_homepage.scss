@@ -1,0 +1,498 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins";
+
+// suitcase-banner-section
+
+.suitcase-banner-section {
+  width: 100%;
+  background-color: get-color("banner-color");
+  height: clamp(270px, 60vw, 422px);
+
+  @media screen and (min-width: $bp-sm) {
+    height: clamp(422px, 55vw, 861px);
+  }
+}
+
+.suitcase-banner-container {
+  height: 100%;
+}
+
+.suitcase-banner {
+  display: block;
+  position: relative;
+  width: 100%;
+  max-width: 1700px;
+  height: 100%;
+}
+
+.suitcase-banner-text-container {
+  width: 50%;
+  position: absolute;
+  top: clamp(25%, 5vw, 35%);
+  left: 0;
+  display: inline-flex;
+  flex-direction: column;
+
+  @include mixins.responsive-value(gap, 7, 30);
+
+  @media screen and (width >= 500px) {
+    top: 25%;
+  }
+
+  @media screen and (min-width: $bp-md) {
+    top: 32.6%;
+  }
+}
+
+.suitcase-banner-title {
+  font-family: Montserrat, sans-serif;
+
+  @include mixins.responsive-value(font-size, 16, 50);
+
+  font-weight: 900;
+  line-height: 110%;
+  letter-spacing: 0%;
+
+  @media screen and (min-width: $bp-sm) {
+    line-height: 126%;
+  }
+}
+
+.suitcase-banner-text {
+  @include mixins.text;
+
+  line-height: 120%;
+
+  @media screen and (min-width: $bp-sm) {
+    line-height: 150%;
+  }
+}
+
+.suitcase-banner-img {
+  position: absolute;
+  top: 13.5%;
+  right: 1%;
+  width: 59%;
+  height: auto;
+  max-width: 766px;
+  max-height: 625px;
+}
+
+.suitcase-banner-button {
+  @include mixins.responsive-value(width, 96, 174);
+
+  aspect-ratio: 174/60;
+}
+
+// discount-section
+.discount-section-container {
+  margin-top: clamp(-99px, -5vw, -25px);
+
+  @media screen and (min-width: $bp-lg) {
+    margin-top: -99px;
+  }
+}
+
+.discount-section-card-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  background-color: get-color("white-color");
+  box-shadow: 0 20px 80px 0 #c1c7d4b3;
+
+  @media screen and (min-width: $bp-sm) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.discount-article-container {
+  display: flex;
+  flex-direction: column;
+  padding: 55px 70px 56px 48px;
+
+  @include mixins.responsive-value(gap, 15, 29);
+
+  @media screen and (min-width: $bp-md) {
+    padding: 65px 80px 66px 58px;
+  }
+
+  @media screen and (min-width: $bp-lg) {
+    padding: 74px 90px 76px 68px;
+  }
+}
+
+.discount-portfolio-container {
+  @include mixins.flex-row(flex-start, center, 22px);
+}
+
+.discount-section-title1 {
+  font-weight: 700;
+  letter-spacing: 0%;
+  margin-bottom: 7px;
+
+  @include mixins.responsive-value(font-size, 14, 20);
+}
+
+.discount-section-text1 {
+  @include mixins.text;
+}
+
+.discount-section-text2 {
+  @include mixins.text;
+
+  line-height: 150%;
+}
+
+.discount-section-title-main {
+  @include mixins.title;
+
+  line-height: 136%;
+}
+
+.discount-section-background-container {
+  background:
+    linear-gradient(rgb(0 0 0 / 40%), rgb(0 0 0 / 40%)),
+    url("../../src/assets/images/discount_banner.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @include mixins.responsive-value(gap, 7, 30);
+  @include mixins.responsive-value(padding-left, 30, 73);
+
+  min-height: 450px;
+}
+
+.discount-section-text3 {
+  @include mixins.text;
+
+  line-height: 144%;
+  color: get-color("white-color");
+
+  @include mixins.responsive-value(max-width, 280, 393);
+}
+
+.discount-section-title2 {
+  @include mixins.title;
+
+  color: get-color("white-color");
+}
+
+.discount-section-button {
+  @include mixins.responsive-value(width, 96, 175);
+
+  aspect-ratio: 175/60;
+}
+
+// travel-section
+.section-container {
+  @include mixins.responsive-value(margin-top, 50, 120);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  @include mixins.responsive-value(gap, 30, 60);
+}
+
+.section-text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-title-main {
+  @include mixins.title;
+}
+
+.section-text {
+  @include mixins.text;
+
+  @media screen and (max-width: $bp-sm) {
+    font-size: 14px;
+  }
+}
+
+.travel-slider {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.travel-section-list {
+  display: flex;
+  gap: 20px;
+  overflow: hidden;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  transition: transform 0.5s ease;
+}
+
+.travel-prev,
+.travel-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgb(0 0 0 / 45%);
+  border: none;
+  color: get-color("white-color");
+  font-size: 32px;
+  padding: 10px 14px;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 50%;
+  transition: 0.3s ease;
+
+  &:hover {
+    background: rgb(0 0 0 / 70%);
+  }
+}
+
+.travel-prev {
+  left: 10px;
+}
+
+.travel-next {
+  right: 10px;
+}
+
+.travel-section-item1 {
+  @include mixins.travel_item("../../src/assets/images/travel1.jpg");
+}
+
+.travel-section-item2 {
+  @include mixins.travel_item("../../src/assets/images/travel2.jpg");
+}
+
+.travel-section-item3 {
+  @include mixins.travel_item("../../src/assets/images/travel3.jpg");
+}
+
+.travel-section-item4 {
+  @include mixins.travel-item("../../src/assets/images/travel4.jpg");
+}
+
+.travel-section-item-container {
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 15px;
+  padding: 0 10px 24px 20px;
+  bottom: 0;
+  box-sizing: border-box;
+
+  @media screen and (min-width: $bp-sm) {
+    gap: 20px;
+    padding: 0 20px 44px 40px;
+  }
+
+  @media screen and (min-width: $bp-md) {
+    padding: 0 15px 34px 30px;
+  }
+
+  @media screen and (min-width: $bp-lg) {
+    padding: 0 20px 44px 40px;
+  }
+}
+
+.travel-section-item-title {
+  @include mixins.text;
+
+  font-weight: 700;
+
+  @include mixins.responsive-value(font-size, 14, 19);
+
+  line-height: 134%;
+  color: get-color("white-color");
+}
+
+.travel-section-item-text {
+  @include mixins.text;
+  @include mixins.responsive-value(font-size, 14, 19);
+
+  line-height: 137%;
+  color: get-color("white-color");
+}
+
+// card-section
+.card-list {
+  width: 100%;
+  display: grid;
+  grid-auto-flow: row;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 250px));
+  justify-content: center;
+
+  @media screen and (min-width: $bp-lg) {
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(250px, clamp(250px, calc(250px + 0.1731 * (100vw - 1440px)), 295px))
+    );
+  }
+}
+
+// main-offer-section
+
+.offer-section-container {
+  @include mixins.responsive-value(margin-top, 50, 120);
+}
+
+.offer-section-background-container {
+  background:
+    linear-gradient(rgb(0 0 0 / 40%), rgb(0 0 0 / 40%)),
+    url("../../src/assets/images/offer_banner.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  place-items: center start;
+  @include mixins.responsive-value(gap, 20, 50);
+
+  width: 100%;
+  padding: 0 30px;
+  @include mixins.responsive-value(height, 200, 407);
+
+  max-height: 407px;
+
+  @media screen and (width >=450px) {
+    padding: 0 60px;
+  }
+
+  @media screen and (min-width: $bp-md) {
+    padding: 0 80px;
+  }
+
+  @media screen and (min-width: $bp-lg) {
+    padding: 0 105px;
+  }
+}
+
+.offer-section-text-container1 {
+  @include mixins.flex-column(center, flex-start, 20px);
+
+  max-width: 497px;
+}
+
+.offer-section-percentage {
+  @include mixins.responsive-value(font-size, 60, 223);
+
+  font-weight: 900;
+  line-height: 75%;
+  letter-spacing: 0%;
+  color: get-color("white-color");
+  @media screen and (min-width: $bp-lg) {
+    font-size: clamp(
+      160px,
+      calc(160px + (223px - 160px) * ((100vw - 1440px) / (1700px - 1440px))),
+      223px
+    );
+  }
+}
+
+.offer-section-item-text1 {
+  @include mixins.text;
+  @include mixins.responsive-value(font-size, 12, 20);
+
+  line-height: 100%;
+  color: get-color("white-color");
+  @media screen and (min-width: $bp-lg) {
+    font-size: clamp(
+      17px,
+      calc(17px + (20px - 160px) * ((100vw - 1440px) / (1700px - 1440px))),
+      20px
+    );
+  }
+}
+
+.offer-section-text-container2 {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.offer-section-text-small {
+  @include mixins.flex-column(center, flex-start, 30px);
+  @include mixins.responsive-value(gap, 10, 30);
+
+  display: inline-flex;
+  max-width: 425px;
+}
+
+.offer-section-title {
+  @include mixins.responsive-value(font-size, 16, 40);
+
+  font-weight: 900;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: get-color("white-color");
+  @media screen and (min-width: $bp-lg) {
+    font-size: clamp(
+      30px,
+      calc(30px + (30px - 40px) * ((100vw - 1440px) / (1700px - 1440px))),
+      40px
+    );
+  }
+}
+
+.offer-section-item-text2 {
+  @include mixins.text;
+
+  line-height: 144%;
+  color: get-color("white-color");
+
+  @media screen and (max-width: $bp-sm) {
+    font-size: 10px;
+    line-height: 120%;
+  }
+}
+
+.offer-section-button {
+  @include mixins.responsive-value(width, 110, 200);
+
+  aspect-ratio: 200/60;
+}
+
+// customers-section
+
+.customers-section-container {
+  @include mixins.responsive-value(margin-bottom, 50, 120);
+}
+
+.customers-section-list {
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.customers-section-item {
+  @include mixins.flex-column(center, center, 25px);
+
+  box-shadow: 0 20px 80px 0 #c1c7d4b3;
+  padding: 45px 40px 48px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.customers-section-item-text1 {
+  @include mixins.text;
+
+  line-height: 150%;
+  text-align: center;
+}
+
+.customers-section-item-text2 {
+  @include mixins.text;
+
+  font-weight: 700;
+  color: get-color("btn-color");
+  text-align: center;
+}

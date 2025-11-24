@@ -1,0 +1,63 @@
+@mixin flex-row($justify: flex-start, $align: center, $gap: 0) {
+  display: flex;
+  flex-direction: row;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+}
+
+@mixin flex-column($justify: center, $align: center, $gap: 10px) {
+  display: flex;
+  flex-direction: column;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+}
+
+
+@mixin responsive-value($property, $min, $max) {
+  #{$property}: clamp(#{$min}px,
+    calc(#{$min}px + (#{$max} - #{$min}) * ((100vw - 375px) / (1700 - 375))),
+    #{$max}px);
+}
+
+
+@mixin text {
+  font-family: Montserrat, sans-serif;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0;
+
+  @include responsive-value(font-size, 12, 17);
+}
+
+@mixin title {
+  font-family: Montserrat, sans-serif;
+  font-weight: 900;
+  line-height: 136%;
+  letter-spacing: 0;
+  font-size: 25px;
+
+  @include responsive-value(font-size, 25, 40);
+}
+
+@mixin travel-item($url: "../../src/assets/images/travel1.jpg") {
+  position: relative;
+  background: linear-gradient(rgb(0 0 0 / 40%), rgb(0 0 0 / 40%)), url(#{$url});
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  @include responsive-value(width, 200, 296);
+
+  box-sizing: border-box;
+  aspect-ratio: 296/600;
+  overflow: hidden;
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+
+  &:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 30px rgb(0 0 0 / 30%);
+  }
+}

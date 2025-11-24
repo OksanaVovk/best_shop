@@ -1,0 +1,264 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins";
+
+// cart-banner-section
+
+.cart-banner-section {
+  @include mixins.flex-row(center, center, 0);
+
+  width: 100%;
+  background:
+    linear-gradient(rgb(0 0 0 / 50%), rgb(0 0 0 / 50%)),
+    url("../../src/assets/images/cart_banner.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @include mixins.responsive-value(height, 150, 229);
+  @include mixins.responsive-value(margin-bottom, 40, 70);
+
+  h1 {
+    @include mixins.text;
+
+    font-weight: 700;
+    @include mixins.responsive-value(font-size, 30, 50);
+
+    color: get-color("white-color");
+  }
+}
+
+// cart-table-section
+
+.cart-table-section {
+  width: 100%;
+  @include mixins.responsive-value(margin-bottom, 50, 120);
+
+  .cart-table-box {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+
+    @media screen and (max-width: $bp-md) {
+      grid-template-columns: 1fr;
+    }
+
+    .empty-cart {
+      display: none;
+
+      &.active {
+        display: block;
+        padding: 50px 0;
+        min-height: 600px;
+      }
+
+      p {
+        @include mixins.text;
+
+        font-weight: 700;
+        text-align: center;
+      }
+    }
+
+    .cart-table {
+      display: none;
+      width: 100%;
+
+      &.active {
+        display: block;
+      }
+
+      .cart-header {
+        display: grid;
+        grid-template-columns: 10% 25% 15% 20% 15% 15%;
+        background: get-color("dark-grey-color");
+        color: get-color("white-color");
+        padding: 18px 0;
+        font-family: "SF Pro", sans-serif;
+        font-weight: 700;
+        line-height: 100%;
+        letter-spacing: 0;
+        @include mixins.responsive-value(font-size, 12, 18);
+
+        text-transform: uppercase;
+
+        @media screen and (max-width: $bp-sm) {
+          display: none;
+        }
+
+        span {
+          @include mixins.flex-row(center, center, 0);
+
+          width: 100%;
+        }
+      }
+
+      .cart-list {
+        display: flex;
+        flex-direction: column;
+        @include mixins.responsive-value(margin-bottom, 40, 70);
+
+        .cart-item {
+          display: grid;
+          grid-template-columns: 10% 25% 15% 20% 15% 15%;
+          align-items: center;
+          padding: 8px 0;
+          font-family: "SF Pro", sans-serif;
+          font-weight: 700;
+          line-height: 140%;
+          letter-spacing: 0;
+          @include mixins.responsive-value(font-size, 12, 18);
+
+          border-bottom: 2px solid get-color("btn-color");
+
+          @media screen and (max-width: $bp-sm) {
+            grid-template-columns: 80px 1fr 60px;
+            grid-template-areas:
+              "img name delete"
+              "img price delete"
+              "img qty delete"
+              "img total delete";
+            row-gap: 6px;
+          }
+        }
+
+        .cart-img-box {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          .cart-img {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+          }
+        }
+
+        .cart-name {
+          font-weight: 700;
+          text-align: center;
+        }
+
+        .total-box {
+          @include mixins.flex-row(center, center, 0);
+        }
+
+        .cart-price,
+        .cart-total {
+          font-weight: 700;
+          text-align: center;
+        }
+
+        .cart-counter {
+          @include mixins.flex-row(center, center, 20px);
+
+          button {
+            border: none;
+            background: transparent;
+            font-weight: 700;
+            @include mixins.responsive-value(font-size, 26, 34);
+
+            cursor: pointer;
+
+            &:hover {
+              color: get-color("hover-btn-color");
+            }
+          }
+
+          span {
+            font-weight: 700;
+            @include mixins.responsive-value(font-size, 19, 25);
+          }
+        }
+
+        .cart-delete {
+          background-color: transparent;
+        }
+
+        .cart-delete svg {
+          cursor: pointer;
+          transition: 0.2s;
+
+          &:hover {
+            opacity: 0.6;
+          }
+        }
+      }
+
+      .flex-container {
+        @include mixins.flex-column(flex-start, flex-start, 40px);
+        @media screen and (min-width: $bp-md) {
+          @include mixins.flex-row(space-between, flex-start, 20px);
+        }
+
+        .cart-buttons {
+          @include mixins.flex-row(flex-start, center, 20px);
+
+          button {
+            @include mixins.responsive-value(width, 149, 224);
+
+            aspect-ratio: 224/60;
+            font-family: "SF Pro", sans-serif;
+            font-weight: 700;
+            line-height: 100%;
+            letter-spacing: 0;
+            @include mixins.responsive-value(font-size, 12, 15);
+
+            text-transform: uppercase;
+          }
+        }
+
+        .cart-summary {
+          color: get-color("white-color");
+          @include mixins.responsive-value(width, 300, 571);
+
+          background-color: get-color("dark-grey-color");
+          padding: 59px 47px 42px 42px;
+          @include mixins.text;
+
+          font-weight: 700;
+          box-sizing: border-box;
+
+          .summary-row {
+            @include mixins.flex-row(space-between, center, 20px);
+
+            &:not(:first-of-type) {
+              @include mixins.responsive-value(padding-top, 10, 15);
+
+              border-top: 2px solid get-color("btn-color");
+            }
+
+            &:not(:last-of-type) {
+              @include mixins.responsive-value(padding-bottom, 15, 20);
+            }
+
+            &:last-of-type {
+              @include mixins.responsive-value(margin-bottom, 25, 43);
+            }
+          }
+
+          .summary-discount {
+            display: none;
+
+            &.active {
+              display: flex;
+            }
+          }
+
+          .amount-due {
+            @include mixins.responsive-value(font-size, 14, 20);
+          }
+
+          .checkout-btn {
+            @include mixins.responsive-value(width, 136, 229);
+
+            aspect-ratio: 229/42;
+            @include mixins.text;
+
+            font-weight: 700;
+            @include mixins.responsive-value(font-size, 12, 18);
+          }
+        }
+      }
+    }
+  }
+}

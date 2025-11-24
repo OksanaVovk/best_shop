@@ -1,0 +1,189 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins";
+
+.footer {
+  font-family: "Helvetica Neue", sans-serif;
+
+  &-benefits {
+    background-color: get-color("dark-grey-color");
+    background-image: url("../../src/assets/images/lines.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: get-color("white-color");
+    padding: 40px 0;
+    box-sizing: border-box;
+
+    &-title {
+      font-family: Inter, sans-serif;
+      font-weight: 700;
+      @include mixins.responsive-value(font-size, 12, 18);
+      @include mixins.responsive-value(margin-bottom, 15, 30);
+    }
+
+    &-list {
+      @include mixins.flex-column(center, flex-start, 10px);
+
+      @media screen and (min-width: $bp-sm) {
+        @include mixins.flex-row(space-between, center, 80px);
+
+        @include mixins.responsive-value(gap, 20, 80);
+      }
+
+      .benefit-item {
+        @include mixins.flex-row(flex-start, center, 20px);
+        @include mixins.responsive-value(gap, 10, 20);
+
+        p {
+          font-family: "Helvetica Neue", sans-serif;
+          @include mixins.responsive-value(font-size, 12, 15);
+
+          font-weight: 500;
+          line-height: 143%;
+          color: get-color("white-color");
+          text-align: start;
+        }
+
+        img {
+          @include mixins.responsive-value(width, 30, 60);
+
+          aspect-ratio: 1;
+        }
+      }
+    }
+  }
+
+  &-main {
+    @include mixins.responsive-value(padding-top, 40, 120);
+    @include mixins.responsive-value(padding-bottom, 15, 46);
+
+    .footer-columns {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "links"
+        "contact1"
+        "shipping"
+        "contact2";
+      @include mixins.responsive-value(gap, 20, 50);
+      @include mixins.responsive-value(margin-bottom, 50, 110);
+      @media screen and (min-width: $bp-sm) {
+        grid-template-columns: 2fr 1fr;
+        grid-template-areas:
+          "links contact1"
+          "shipping contact2";
+      }
+
+      h4 {
+        @include mixins.responsive-value(font-size, 12, 15);
+
+        font-weight: 700;
+        color: get-color("black-color");
+        @include mixins.responsive-value(margin-bottom, 12, 24);
+      }
+
+      p {
+        @include mixins.responsive-value(font-size, 12, 15);
+
+        font-weight: 400;
+        line-height: 155%;
+      }
+
+      ul {
+        @include mixins.flex-column(center, flex-start, 12px);
+        @include mixins.responsive-value(gap, 7, 12);
+
+        li {
+          @include mixins.responsive-value(font-size, 12, 15);
+
+          font-weight: 400;
+          line-height: 155%;
+        }
+      }
+
+      .footer-col-container {
+        grid-area: links;
+        @include mixins.flex-row(flex-start, flex-start, 140px);
+        @include mixins.responsive-value(gap, 50, 140);
+
+        max-width: 639px;
+      }
+
+      .footer-contact-list {
+        grid-area: contact2;
+        display: grid;
+        grid-template-columns: 1fr;
+        @include mixins.responsive-value(column-gap, 15, 30);
+        @media screen and (min-width: $bp-lg) {
+          grid-template-columns: auto 1fr;
+          @include mixins.responsive-value(row-gap, 15, 30);
+        }
+
+        li {
+          @include mixins.flex-row(flex-start, center, 14px);
+
+          p {
+            @include mixins.responsive-value(font-size, 12, 15);
+
+            font-weight: 400;
+            line-height: 155%;
+          }
+
+          .phone {
+            @include mixins.responsive-value(width, 12, 24);
+
+            aspect-ratio: 1;
+          }
+
+          .email {
+            @include mixins.responsive-value(width, 12, 24);
+
+            aspect-ratio: 24/18;
+          }
+
+          .clock {
+            @include mixins.responsive-value(width, 14, 27);
+
+            aspect-ratio: 1;
+          }
+
+          .map {
+            @include mixins.responsive-value(width, 15, 30);
+
+            aspect-ratio: 30/34;
+          }
+        }
+      }
+    }
+
+    .footer-col-grid {
+      grid-area: contact1;
+    }
+
+    .footer-shipping {
+      grid-area: shipping;
+      max-width: 639px;
+
+      h4 {
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+
+      p {
+        @include mixins.responsive-value(font-size, 12, 15);
+
+        font-weight: 400;
+        line-height: 155%;
+      }
+    }
+
+    .footer-copy {
+      text-align: center;
+
+      svg {
+        @include mixins.responsive-value(width, 80, 120);
+
+        height: 17px;
+      }
+    }
+  }
+}
